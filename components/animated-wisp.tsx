@@ -108,19 +108,19 @@ function Sphere() {
       // Slower, more subtle pulse
       float pulse = sin(uTime * 1.5) * 0.5 + 0.5;
 
-      // Energy intensity - reduced
-      float intensity = 0.35 + vDisplacement * 1.8 + pulse * 0.15;
+      // Very low center intensity - almost transparent in middle
+      float intensity = 0.15 + vDisplacement * 1.0 + pulse * 0.08;
 
-      // Softer, more muted colors for landing page
-      vec3 darkBlue = vec3(0.12, 0.3, 0.65);
-      vec3 electricBlue = vec3(0.25, 0.55, 0.85);
-      vec3 brightCyan = vec3(0.4, 0.7, 0.95);
-      vec3 white = vec3(0.6, 0.75, 0.95);
+      // Almost black core for button visibility
+      vec3 darkBlue = vec3(0.02, 0.06, 0.2);       // Nearly black core
+      vec3 electricBlue = vec3(0.1, 0.25, 0.5);    // Very dark mid
+      vec3 brightCyan = vec3(0.4, 0.7, 0.9);       // Bright edges only
+      vec3 white = vec3(0.65, 0.8, 0.95);          // Edge highlights
 
-      // Smoother color transitions
+      // Color transitions heavily favor edges
       vec3 color = mix(darkBlue, electricBlue, intensity);
-      color = mix(color, brightCyan, intensity * intensity * 0.8);
-      color = mix(color, white, fresnel * fresnel * 0.8);
+      color = mix(color, brightCyan, intensity * intensity * 0.7);
+      color = mix(color, white, fresnel * fresnel * fresnel * 0.9);
 
       // Subtle energy flow - not harsh lattice lines
       float flow1 = sin(vUv.x * 15.0 + uTime * 2.0 + vUv.y * 3.0) * sin(vUv.y * 18.0 - uTime * 1.8);
@@ -128,15 +128,15 @@ function Sphere() {
       float flowPattern = (flow1 + flow2) * 0.5;
       flowPattern = smoothstep(0.6, 0.85, flowPattern);
 
-      // Gentle energy highlights - much more subtle
-      color += vec3(0.3, 0.5, 0.7) * flowPattern * pulse * 0.3;
+      // Minimal center highlights - only on outer edges
+      color += vec3(0.2, 0.3, 0.5) * flowPattern * pulse * 0.15 * fresnel;
 
-      // Soft displacement highlights
-      float highlights = smoothstep(0.12, 0.16, vDisplacement);
-      color += vec3(0.35, 0.5, 0.7) * highlights * 0.25;
+      // Displacement highlights - only visible at edges with fresnel
+      float highlights = smoothstep(0.12, 0.16, vDisplacement) * fresnel * fresnel;
+      color += vec3(0.3, 0.5, 0.7) * highlights * 0.2;
 
-      // Moderate transparency
-      float alpha = 0.7 + fresnel * 0.15 + flowPattern * 0.08;
+      // Very transparent center, opaque only at edges
+      float alpha = 0.25 + fresnel * fresnel * 0.4 + flowPattern * 0.05;
 
       gl_FragColor = vec4(color, alpha);
     }
@@ -150,18 +150,24 @@ function Sphere() {
 
     void main() {
       vec3 viewDirection = normalize(vec3(0.0, 0.0, 1.0) - vNormal);
-      float fresnel = pow(1.0 - abs(dot(viewDirection, vNormal)), 4.5);
+      // Sharper fresnel for electron orbital edge
+      float fresnel = pow(1.0 - abs(dot(viewDirection, vNormal)), 3.0);
 
-      float pulse = sin(uTime * 1.2) * 0.5 + 0.5;
+      float pulse = sin(uTime * 1.8) * 0.5 + 0.5;
 
-      vec3 glowColor = vec3(0.25, 0.5, 0.8);
+      // Bright cyan-white electron glow
+      vec3 electronGlow = vec3(0.4, 0.75, 1.0);
 
-      float intensity = fresnel * 0.9 + vDisplacement * 0.6 + pulse * 0.1;
+      float intensity = fresnel * 2.0 + vDisplacement * 1.2 + pulse * 0.3;
 
-      // Even more subtle outer atmosphere
-      float alpha = 0.15 + fresnel * 0.12 + pulse * 0.05;
+      // Sharp electron orbital ring - visible and defined
+      float alpha = 0.35 + fresnel * 0.35 + pulse * 0.15;
 
-      gl_FragColor = vec4(glowColor * intensity, alpha);
+      // Add bright edge highlights
+      float edgeHighlight = pow(fresnel, 2.0) * 0.5;
+      vec3 finalColor = electronGlow * intensity + vec3(0.6, 0.85, 1.0) * edgeHighlight;
+
+      gl_FragColor = vec4(finalColor, alpha);
     }
   `
 
@@ -190,8 +196,9 @@ function Sphere() {
 
     if (outerRef.current) {
       const time = state.clock.elapsedTime
-      outerRef.current.rotation.y += delta * 0.05
-      outerRef.current.rotation.x = Math.sin(time * 0.3) * 0.08
+      // Faster rotation for electron orbital feel
+      outerRef.current.rotation.y += delta * 0.12
+      outerRef.current.rotation.x = Math.sin(time * 0.5) * 0.15
     }
 
     if (coreRef.current) {
@@ -215,9 +222,9 @@ function Sphere() {
         />
       </mesh>
 
-      {/* Outer subtle glow sphere - ethereal atmosphere */}
+      {/* Outer electron orbital shell */}
       <mesh ref={outerRef}>
-        <icosahedronGeometry args={[1.4, 32]} />
+        <icosahedronGeometry args={[1.6, 32]} />
         <shaderMaterial
           vertexShader={vertexShader}
           fragmentShader={outerGlowShader}

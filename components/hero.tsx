@@ -39,9 +39,6 @@ export function Hero() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
-            WISP
-          </p>
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
             ALGORITHMIC
             <br />
@@ -69,7 +66,10 @@ export function Hero() {
             data-cursor-hover
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-8 py-4 border border-white/20 rounded-full font-mono text-sm tracking-widest uppercase bg-transparent backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-500 inline-block"
+            className="relative px-8 py-4 border-2 border-white/30 rounded-full font-mono text-sm tracking-widest uppercase bg-black/60 backdrop-blur-md hover:bg-white hover:text-black hover:border-white transition-colors duration-500 inline-block shadow-2xl"
+            style={{
+              textShadow: "0 2px 10px rgba(0, 0, 0, 0.8)",
+            }}
           >
             GET STARTED
             <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#2563eb] rounded-full animate-pulse" />
