@@ -7,9 +7,11 @@ import { MathUtils } from "three"
 import type { Mesh, ShaderMaterial } from "three"
 
 function Sphere() {
+  const outerRef = useRef<Mesh>(null)
   const meshRef = useRef<Mesh>(null)
-  const materialRef = useRef<ShaderMaterial>(null)
   const coreRef = useRef<Mesh>(null)
+
+  const materialRef = useRef<ShaderMaterial>(null)
   const { pointer } = useThree()
 
   const uniforms = useMemo(
@@ -93,68 +95,73 @@ function Sphere() {
 
   const fragmentShader = `
     uniform float uTime;
+    uniform vec2 uMouse;
     varying vec2 vUv;
     varying float vDisplacement;
     varying vec3 vNormal;
 
     void main() {
-      // Energy intensity based on displacement
-      float intensity = 0.3 + vDisplacement * 2.0;
+      // Fresnel for edge glow
+      vec3 viewDirection = normalize(vec3(0.0, 0.0, 1.0) - vNormal);
+      float fresnel = pow(1.0 - abs(dot(viewDirection, vNormal)), 2.2);
 
-      // Warcraft 3 wisp-inspired colors: deep blue → cyan → white
-      vec3 deepBlue = vec3(0.2, 0.5, 0.95);    // Electric blue
-      vec3 cyan = vec3(0.4, 0.75, 1.0);        // Bright cyan
-      vec3 brightCyan = vec3(0.7, 0.9, 1.0);   // Near white cyan
+      // Slower, more subtle pulse
+      float pulse = sin(uTime * 1.5) * 0.5 + 0.5;
 
-      // Create gradient based on intensity
-      vec3 color = mix(deepBlue, cyan, intensity);
-      color = mix(color, brightCyan, intensity * intensity);
+      // Energy intensity - reduced
+      float intensity = 0.35 + vDisplacement * 1.8 + pulse * 0.15;
 
-      // Wireframe grid lines - balanced quality/performance
-      float line = smoothstep(0.0, 0.02, abs(fract(vUv.x * 10.0) - 0.5));
-      line *= smoothstep(0.0, 0.02, abs(fract(vUv.y * 10.0) - 0.5));
+      // Softer, more muted colors for landing page
+      vec3 darkBlue = vec3(0.12, 0.3, 0.65);
+      vec3 electricBlue = vec3(0.25, 0.55, 0.85);
+      vec3 brightCyan = vec3(0.4, 0.7, 0.95);
+      vec3 white = vec3(0.6, 0.75, 0.95);
 
-      // Apply wireframe with enhanced glow on lines
-      vec3 finalColor = color * (1.0 - line * 0.2);
+      // Smoother color transitions
+      vec3 color = mix(darkBlue, electricBlue, intensity);
+      color = mix(color, brightCyan, intensity * intensity * 0.8);
+      color = mix(color, white, fresnel * fresnel * 0.8);
 
-      // Subtle breathing/pulsing effect
-      float pulse = sin(uTime * 1.5) * 0.08 + 0.92;
-      finalColor *= pulse;
+      // Subtle energy flow - not harsh lattice lines
+      float flow1 = sin(vUv.x * 15.0 + uTime * 2.0 + vUv.y * 3.0) * sin(vUv.y * 18.0 - uTime * 1.8);
+      float flow2 = sin(vUv.x * 10.0 - uTime * 1.5 + vUv.y * 2.0) * sin(vUv.y * 12.0 + uTime * 1.2);
+      float flowPattern = (flow1 + flow2) * 0.5;
+      flowPattern = smoothstep(0.6, 0.85, flowPattern);
 
-      // Slight opacity variation for ethereal feel
-      float alpha = 0.65 + intensity * 0.15;
+      // Gentle energy highlights - much more subtle
+      color += vec3(0.3, 0.5, 0.7) * flowPattern * pulse * 0.3;
 
-      gl_FragColor = vec4(finalColor, alpha);
+      // Soft displacement highlights
+      float highlights = smoothstep(0.12, 0.16, vDisplacement);
+      color += vec3(0.35, 0.5, 0.7) * highlights * 0.25;
+
+      // Moderate transparency
+      float alpha = 0.7 + fresnel * 0.15 + flowPattern * 0.08;
+
+      gl_FragColor = vec4(color, alpha);
     }
   `
 
-  const coreFragmentShader = `
+  const outerGlowShader = `
     uniform float uTime;
     varying vec2 vUv;
     varying float vDisplacement;
     varying vec3 vNormal;
 
     void main() {
-      // Energy intensity based on displacement
-      float intensity = 0.3 + vDisplacement * 2.0;
+      vec3 viewDirection = normalize(vec3(0.0, 0.0, 1.0) - vNormal);
+      float fresnel = pow(1.0 - abs(dot(viewDirection, vNormal)), 4.5);
 
-      // Subtle core colors - similar to outer but slightly brighter
-      vec3 mediumBlue = vec3(0.3, 0.6, 0.95);   // Medium blue
-      vec3 brightCyan = vec3(0.5, 0.8, 1.0);    // Bright cyan
-      vec3 lightCyan = vec3(0.65, 0.85, 1.0);   // Light cyan
+      float pulse = sin(uTime * 1.2) * 0.5 + 0.5;
 
-      // Create subtle gradient for core
-      vec3 color = mix(mediumBlue, brightCyan, intensity);
-      color = mix(color, lightCyan, intensity * 0.5);
+      vec3 glowColor = vec3(0.25, 0.5, 0.8);
 
-      // Subtle breathing/pulsing effect
-      float pulse = sin(uTime * 1.5) * 0.08 + 0.92;
-      color *= pulse;
+      float intensity = fresnel * 0.9 + vDisplacement * 0.6 + pulse * 0.1;
 
-      // Subtle opacity - just a bit more visible than outer
-      float alpha = 0.2 + intensity * 0.15;
+      // Even more subtle outer atmosphere
+      float alpha = 0.15 + fresnel * 0.12 + pulse * 0.05;
 
-      gl_FragColor = vec4(color, alpha);
+      gl_FragColor = vec4(glowColor * intensity, alpha);
     }
   `
 
@@ -165,50 +172,58 @@ function Sphere() {
     }
 
     if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.05
+      // Gentle, calm rotation for landing page
+      meshRef.current.rotation.y += delta * 0.08
+
+      const time = state.clock.elapsedTime
       meshRef.current.rotation.x = MathUtils.lerp(
         meshRef.current.rotation.x,
-        pointer.y * 0.2,
+        Math.sin(time * 0.4) * 0.12 + pointer.y * 0.15,
         0.05
       )
       meshRef.current.rotation.z = MathUtils.lerp(
         meshRef.current.rotation.z,
-        pointer.x * 0.2,
+        Math.cos(time * 0.3) * 0.12 + pointer.x * 0.15,
         0.05
       )
     }
 
-    // Animate inner core with counter-rotation for visual depth
+    if (outerRef.current) {
+      const time = state.clock.elapsedTime
+      outerRef.current.rotation.y += delta * 0.05
+      outerRef.current.rotation.x = Math.sin(time * 0.3) * 0.08
+    }
+
     if (coreRef.current) {
-      coreRef.current.rotation.y -= delta * 0.08
-      coreRef.current.rotation.x += delta * 0.04
+      coreRef.current.rotation.y -= delta * 0.06
+      coreRef.current.rotation.x += delta * 0.03
     }
   })
 
   return (
     <>
-      {/* Main animated wireframe sphere - HIGH QUALITY */}
+      {/* Main organic energy sphere */}
       <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1.5, 64]} />
+        <icosahedronGeometry args={[1.2, 64]} />
         <shaderMaterial
           ref={materialRef}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
           uniforms={uniforms}
           transparent
-          wireframe
+          depthWrite={false}
         />
       </mesh>
 
-      {/* Inner animated core - HIGH QUALITY */}
-      <mesh ref={coreRef}>
-        <icosahedronGeometry args={[0.7, 32]} />
+      {/* Outer subtle glow sphere - ethereal atmosphere */}
+      <mesh ref={outerRef}>
+        <icosahedronGeometry args={[1.4, 32]} />
         <shaderMaterial
           vertexShader={vertexShader}
-          fragmentShader={coreFragmentShader}
+          fragmentShader={outerGlowShader}
           uniforms={uniforms}
           transparent
-          wireframe={false}
+          depthWrite={false}
         />
       </mesh>
     </>
