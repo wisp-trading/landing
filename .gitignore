@@ -2,6 +2,7 @@
 
 # ide
 .idea
+/docs
 
 # dependencies
 /node_modules

@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { SentientSphere } from "./sentient-sphere"
+import { WispOrb } from "./sentient-sphere"
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null)
@@ -18,7 +18,7 @@ export function Hero() {
     <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-[#050505]">
       {/* 3D Sphere Background */}
       <div className="absolute inset-0">
-        <SentientSphere />
+        <WispOrb />
       </div>
 
       {/* Typography Overlay */}
