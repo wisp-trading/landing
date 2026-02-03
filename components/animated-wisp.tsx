@@ -12,11 +12,11 @@ function Sphere() {
   const { pointer } = useThree()
 
   const uniforms = useMemo(
-      () => ({
-        uTime: { value: 0 },
-        uMouse: { value: [0, 0] },
-      }),
-      [],
+    () => ({
+      uTime: { value: 0 },
+      uMouse: { value: [0, 0] },
+    }),
+    []
   )
 
   const vertexShader = `
@@ -164,8 +164,16 @@ function Sphere() {
 
     if (meshRef.current) {
       meshRef.current.rotation.y += delta * 0.05
-      meshRef.current.rotation.x = MathUtils.lerp(meshRef.current.rotation.x, pointer.y * 0.2, 0.05)
-      meshRef.current.rotation.z = MathUtils.lerp(meshRef.current.rotation.z, pointer.x * 0.2, 0.05)
+      meshRef.current.rotation.x = MathUtils.lerp(
+        meshRef.current.rotation.x,
+        pointer.y * 0.2,
+        0.05
+      )
+      meshRef.current.rotation.z = MathUtils.lerp(
+        meshRef.current.rotation.z,
+        pointer.x * 0.2,
+        0.05
+      )
     }
 
     // Animate inner core with counter-rotation for visual depth
@@ -214,25 +222,30 @@ export function WispOrb() {
 
   if (!mounted) {
     return (
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="w-64 h-64 rounded-full border border-white/10 animate-pulse" />
-        </div>
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="w-64 h-64 rounded-full border border-white/10 animate-pulse" />
+      </div>
     )
   }
 
   return (
-      <Canvas
-          camera={{ position: [0, 0, 5], fov: 45 }}
-          className="w-full my-0 h-full py-0"
-          dpr={[1, 2]}
-          gl={{
-            antialias: true,
-            alpha: true,
-          }}
-      >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[0, 0, 0]} intensity={0.6} color="#5599ff" distance={5} />
-        <Sphere />
-      </Canvas>
+    <Canvas
+      camera={{ position: [0, 0, 5], fov: 45 }}
+      className="w-full my-0 h-full py-0"
+      dpr={[1, 2]}
+      gl={{
+        antialias: true,
+        alpha: true,
+      }}
+    >
+      <ambientLight intensity={0.3} />
+      <pointLight
+        position={[0, 0, 0]}
+        intensity={0.6}
+        color="#5599ff"
+        distance={5}
+      />
+      <Sphere />
+    </Canvas>
   )
 }

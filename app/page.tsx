@@ -16,9 +16,10 @@ export default function Home() {
       <main>
         <Hero />
         <SectionBlend />
-        <About />
-        <Works />
-        <TechMarquee />
+
+        {/*<About />*/}
+        {/*<Works />*/}
+        {/*<TechMarquee />*/}
         <Footer />
       </main>
     </SmoothScroll>

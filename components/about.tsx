@@ -22,7 +22,10 @@ export function About() {
   const smoothX = useSpring(x, { stiffness: 100, damping: 30 })
 
   return (
-    <section ref={containerRef} className="relative py-32 overflow-hidden md:py-0">
+    <section
+      ref={containerRef}
+      className="relative py-32 overflow-hidden md:py-0"
+    >
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -31,19 +34,27 @@ export function About() {
         transition={{ duration: 0.8 }}
         className="px-8 md:px-12 mb-0 py-20"
       >
-        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">03 — PHILOSOPHY</p>
-        <h2 className="font-sans text-3xl md:text-5xl font-light italic">Stream of Consciousness</h2>
+        <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
+          03 — PHILOSOPHY
+        </p>
+        <h2 className="font-sans text-3xl md:text-5xl font-light italic">
+          Stream of Consciousness
+        </h2>
       </motion.div>
 
       {/* Horizontal Scroll Container */}
       <div className="relative flex items-center overflow-hidden py-0 gap-0 h-16">
-        <motion.div style={{ x: smoothX }} className="flex gap-16 md:gap-24 px-8 md:px-12 whitespace-nowrap">
+        <motion.div
+          style={{ x: smoothX }}
+          className="flex gap-16 md:gap-24 px-8 md:px-12 whitespace-nowrap"
+        >
           {statements.map((statement, index) => (
             <motion.p
               key={index}
               className="text-4xl md:text-6xl lg:text-7xl font-sans font-light tracking-tight text-white/90"
               style={{
-                WebkitTextStroke: index % 2 === 0 ? "none" : "1px rgba(255,255,255,0.3)",
+                WebkitTextStroke:
+                  index % 2 === 0 ? "none" : "1px rgba(255,255,255,0.3)",
                 color: index % 2 === 0 ? "inherit" : "transparent",
               }}
             >
