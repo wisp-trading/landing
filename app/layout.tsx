@@ -15,10 +15,22 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "AI-Native Product Builder | Portfolio",
+  title: "Wisp - Algorithmic Trading Framework in Go",
   description:
-    "System Architect & Interface Designer crafting intelligent digital experiences",
-  generator: "v0.app",
+    "Fast, production-ready trading framework with interactive TUI. Write strategies in Go, backtest, and deploy to live markets.",
+  openGraph: {
+    title: "Wisp - Algorithmic Trading Framework in Go",
+    description:
+      "Build trading strategies with a composable Go API. Sub-millisecond execution, multi-exchange support, beautiful terminal interface.",
+    url: "https://usewisp.dev",
+    siteName: "Wisp",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wisp - Algorithmic Trading Framework in Go",
+    description:
+      "Fast, production-ready trading framework with interactive TUI.",
+  },
 }
 
 export const viewport: Viewport = {
