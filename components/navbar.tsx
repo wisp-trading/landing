@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Works", href: "#works" },
-  { label: "Contact", href: "#contact" },
+  { label: "Docs", href: "https://github.com/wisp-trading/wisp" },
+  { label: "GitHub", href: "https://github.com/wisp-trading/wisp" },
+  { label: "Examples", href: "https://github.com/wisp-trading/wisp" },
 ]
 
 export function Navbar() {
@@ -20,14 +21,6 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  const scrollToSection = (href: string) => {
-    setIsMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
     <>
@@ -51,24 +44,35 @@ export function Navbar() {
             }}
             className="group flex items-center gap-2"
           >
-            <span className="font-mono text-xs tracking-widest text-muted-foreground">
-              PORTFOLIO
-            </span>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative w-8 h-8"
+            >
+              <Image
+                src="/wisp-logo.png"
+                alt="Wisp Logo"
+                fill
+                className="object-contain"
+              />
+            </motion.div>
             <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-150 transition-transform duration-300" />
           </a>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <li key={link.label}>
-                <button
-                  onClick={() => scrollToSection(link.href)}
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
-                  <span className="text-accent mr-1">0{index + 1}</span>
                   {link.label.toUpperCase()}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                </button>
+                </a>
               </li>
             ))}
           </ul>
@@ -80,7 +84,7 @@ export function Navbar() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
             </span>
             <span className="font-mono text-xs tracking-wider text-muted-foreground">
-              AVAILABLE FOR WORK
+              OPEN SOURCE
             </span>
           </div>
 
@@ -122,20 +126,20 @@ export function Navbar() {
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navLinks.map((link, index) => (
-                <motion.button
+                <motion.a
                   key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => setIsMenuOpen(false)}
                   className="group text-4xl font-sans tracking-tight text-foreground"
                 >
-                  <span className="text-accent font-mono text-sm mr-2">
-                    0{index + 1}
-                  </span>
                   {link.label}
-                </motion.button>
+                </motion.a>
               ))}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -148,7 +152,7 @@ export function Navbar() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
                 </span>
                 <span className="font-mono text-xs tracking-wider text-muted-foreground">
-                  AVAILABLE FOR WORK
+                  OPEN SOURCE
                 </span>
               </motion.div>
             </nav>

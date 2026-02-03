@@ -62,15 +62,18 @@ export function Hero() {
           }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
         >
-          <motion.button
+          <motion.a
+            href="https://github.com/wisp-trading/wisp"
+            target="_blank"
+            rel="noopener noreferrer"
             data-cursor-hover
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-8 py-4 border border-white/20 rounded-full font-mono text-sm tracking-widest uppercase bg-transparent backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-500"
+            className="relative px-8 py-4 border border-white/20 rounded-full font-mono text-sm tracking-widest uppercase bg-transparent backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-500 inline-block"
           >
-            Initialize
+            GET STARTED
             <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#2563eb] rounded-full animate-pulse" />
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Bottom Right */}
