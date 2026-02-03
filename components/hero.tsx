@@ -60,7 +60,7 @@ export function Hero() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
         >
           <motion.a
-            href="https://github.com/wisp-trading/wisp"
+            href="https://docs.usewisp.dev/"
             target="_blank"
             rel="noopener noreferrer"
             data-cursor-hover
