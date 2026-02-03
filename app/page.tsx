@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { Terminal } from "@/components/terminal"
 import { About } from "@/components/about"
 import { Works } from "@/components/works"
 import { TechMarquee } from "@/components/tech-marquee"
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Terminal />
         <SectionBlend />
 
         {/*<About />*/}
