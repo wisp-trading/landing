@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { Intro } from "@/components/intro"
 import { Terminal } from "@/components/terminal"
 import { CodeShowcase } from "@/components/code-showcase"
 import { About } from "@/components/about"
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Intro />
         <Terminal />
         <CodeShowcase />
         <SectionBlend />
