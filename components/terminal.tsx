@@ -23,6 +23,8 @@ export function Terminal() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [cursorVisible, setCursorVisible] = useState(true)
   const [view, setView] = useState<"menu" | "monitor">("menu")
+  const [typedText, setTypedText] = useState("")
+  const [showTUI, setShowTUI] = useState(false)
 
   useEffect(() => {
     if (!isInView) return
@@ -32,8 +34,29 @@ export function Terminal() {
       setCursorVisible((prev) => !prev)
     }, 530)
 
+    // Typing animation: type "wisp" character by character
+    const typingText = "wisp"
+    let currentIndex = 0
+
+    const typeChar = () => {
+      if (currentIndex < typingText.length) {
+        setTypedText(typingText.slice(0, currentIndex + 1))
+        currentIndex++
+        setTimeout(typeChar, 150) // Type each character with 150ms delay
+      } else {
+        // After typing is complete, wait 1 second, then show TUI
+        setTimeout(() => {
+          setShowTUI(true)
+        }, 1000)
+      }
+    }
+
+    // Start typing after a brief delay
+    const typingTimeout = setTimeout(typeChar, 400)
+
     return () => {
       clearInterval(cursorInterval)
+      clearTimeout(typingTimeout)
     }
   }, [isInView])
 
@@ -96,13 +119,27 @@ export function Terminal() {
 
             {/* Terminal Content */}
             <div className="bg-[#1a2332] p-8 md:p-12 min-h-[500px] md:min-h-[600px] font-mono text-base flex flex-col">
-              {view === "menu" ? (
+              {!showTUI ? (
+                // Typing Animation: Simulate user typing "wisp"
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-green-400">$</span>
+                  <span className="text-white">{typedText}</span>
+                  {!showTUI && cursorVisible && (
+                    <span className="inline-block w-2 h-5 bg-white/80" />
+                  )}
+                </motion.div>
+              ) : view === "menu" ? (
                 <>
                   {/* Header */}
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
+                    animate={showTUI ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.2 }}
                     className="mb-12"
                   >
                     <h3 className="text-[#d4af37] text-2xl font-bold mb-8">
@@ -119,8 +156,8 @@ export function Terminal() {
                       <motion.div
                         key={item.label}
                         initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.5 + index * 0.1 }}
+                        animate={showTUI ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.3 + index * 0.1 }}
                         className={`flex items-center gap-3 py-2 px-2 rounded transition-colors cursor-pointer ${
                           selectedIndex === index
                             ? "text-[#d4af37]"
@@ -158,8 +195,8 @@ export function Terminal() {
                   {/* Footer */}
                   <motion.div
                     initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 1.2 }}
+                    animate={showTUI ? { opacity: 1 } : {}}
+                    transition={{ delay: 1.0 }}
                     className="mt-8 pt-6 border-t border-gray-600 text-gray-500 text-sm"
                   >
                     <span className="mr-6">↑↓/jk Navigate</span>
