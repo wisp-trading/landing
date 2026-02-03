@@ -1,7 +1,6 @@
 "use client"
 
-import { Github } from "lucide-react"
-import Image from "next/image"
+import { GithubIcon } from "lucide-react"
 
 export function Footer() {
   return (
@@ -18,7 +17,7 @@ export function Footer() {
               className="hover:text-white transition-colors duration-300"
               aria-label="GitHub"
             >
-              <Github className="w-4 h-4" />
+              <GithubIcon className="w-4 h-4" />
             </a>
           </div>
 
