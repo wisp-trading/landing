@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 
 interface MenuItem {
   icon: string
@@ -19,15 +19,10 @@ const menuItems: MenuItem[] = [
 
 export function Terminal() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const terminalRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [cursorVisible, setCursorVisible] = useState(true)
   const [view, setView] = useState<"menu" | "monitor">("menu")
-
-  // Mouse movement for subtle 3D tilt effect
-  const rotateX = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 })
-  const rotateY = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 })
 
   useEffect(() => {
     if (!isInView) return
@@ -41,26 +36,6 @@ export function Terminal() {
       clearInterval(cursorInterval)
     }
   }, [isInView])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!terminalRef.current) return
-
-      const rect = terminalRef.current.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-
-      const deltaX = (e.clientX - centerX) / (rect.width / 2)
-      const deltaY = (e.clientY - centerY) / (rect.height / 2)
-
-      // Very subtle tilt: max 5 degrees
-      rotateY.set(deltaX * 5)
-      rotateX.set(-deltaY * 5)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [rotateX, rotateY])
 
   return (
     <section
@@ -89,7 +64,6 @@ export function Terminal() {
 
         {/* Right: Terminal TUI Window */}
         <motion.div
-          ref={terminalRef}
           initial={{ opacity: 0, x: 60 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{
@@ -97,20 +71,29 @@ export function Terminal() {
             delay: 0.2,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          style={{
-            rotateX,
-            rotateY,
-            transformStyle: "preserve-3d",
-          }}
           className="lg:col-span-8"
         >
           <div
-            className="relative rounded-lg overflow-hidden border-2 border-[#d4af37] shadow-2xl"
+            className="relative rounded-xl overflow-hidden shadow-2xl"
             style={{
               boxShadow:
-                "0 20px 60px rgba(212, 175, 55, 0.15), 0 0 80px rgba(0, 0, 0, 0.4)",
+                "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(0, 0, 0, 0.3)",
             }}
           >
+            {/* Terminal Title Bar */}
+            <div className="bg-[#1a1a1a] border-b border-white/5 px-4 py-3 flex items-center gap-2">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+              </div>
+              <div className="flex-1 text-center">
+                <span className="font-mono text-xs text-white/40">
+                  wisp — terminal
+                </span>
+              </div>
+            </div>
+
             {/* Terminal Content */}
             <div className="bg-[#1a2332] p-8 md:p-12 min-h-[500px] md:min-h-[600px] font-mono text-base flex flex-col">
               {view === "menu" ? (
