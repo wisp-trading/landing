@@ -40,12 +40,14 @@ export function Hero() {
           }}
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
-            01 — DISCIPLINE
+            01 — WISP
           </p>
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            SYSTEM
+            ALGORITHMIC
             <br />
-            <span className="italic">ARCHITECT</span>
+            TRADING
+            <br />
+            <span className="italic">IN GO</span>
           </h2>
         </motion.div>
 
@@ -83,12 +85,12 @@ export function Hero() {
           className="self-end text-right"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
-            02 — CRAFT
+            02 — HIGH PERFORMANCE
           </p>
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            INTERFACE
+            BUILT FOR
             <br />
-            <span className="italic">DESIGNER</span>
+            <span className="italic">SPEED</span>
           </h2>
         </motion.div>
       </motion.div>
