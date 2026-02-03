@@ -50,12 +50,13 @@ export function Navbar() {
               transition={{ duration: 0.8 }}
               className="relative w-8 h-8"
             >
-              <Image
-                src="/wisp-logo.png"
-                alt="Wisp Logo"
-                fill
-                className="object-contain"
-              />
+              <h3>Wisp</h3>
+              {/*<Image*/}
+              {/*  src="/wisp-logo.png"*/}
+              {/*  alt="Wisp Logo"*/}
+              {/*  fill*/}
+              {/*  className="object-contain"*/}
+              {/*/>*/}
             </motion.div>
             <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-150 transition-transform duration-300" />
           </a>
