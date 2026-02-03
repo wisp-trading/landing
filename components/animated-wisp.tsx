@@ -2,6 +2,7 @@
 
 import { useRef, useMemo, useEffect, useState } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { AdaptiveDpr, AdaptiveEvents } from "@react-three/drei"
 import { MathUtils } from "three"
 import type { Mesh, ShaderMaterial } from "three"
 
@@ -24,12 +25,12 @@ function Sphere() {
     varying vec2 vUv;
     varying float vDisplacement;
     varying vec3 vNormal;
-    
+
     vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
     vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
     vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
     vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-    
+
     float snoise(vec3 v) {
       const vec2 C = vec2(1.0/6.0, 1.0/3.0);
       const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
@@ -75,15 +76,16 @@ function Sphere() {
       m = m * m;
       return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
     }
-    
+
     void main() {
       vUv = uv;
       vNormal = normalize(normalMatrix * normal);
-      
+
+      // Higher quality displacement for smooth organic motion
       float noise = snoise(position * 1.5 + uTime * 0.15);
       float displacement = noise * 0.15;
       vDisplacement = displacement;
-      
+
       vec3 newPosition = position + normal * displacement;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
     }
@@ -94,34 +96,34 @@ function Sphere() {
     varying vec2 vUv;
     varying float vDisplacement;
     varying vec3 vNormal;
-    
+
     void main() {
       // Energy intensity based on displacement
       float intensity = 0.3 + vDisplacement * 2.0;
-      
+
       // Warcraft 3 wisp-inspired colors: deep blue → cyan → white
       vec3 deepBlue = vec3(0.2, 0.5, 0.95);    // Electric blue
       vec3 cyan = vec3(0.4, 0.75, 1.0);        // Bright cyan
       vec3 brightCyan = vec3(0.7, 0.9, 1.0);   // Near white cyan
-      
+
       // Create gradient based on intensity
       vec3 color = mix(deepBlue, cyan, intensity);
       color = mix(color, brightCyan, intensity * intensity);
-      
-      // Wireframe grid lines
-      float line = smoothstep(0.0, 0.02, abs(fract(vUv.x * 12.0) - 0.5));
-      line *= smoothstep(0.0, 0.02, abs(fract(vUv.y * 12.0) - 0.5));
-      
+
+      // Wireframe grid lines - balanced quality/performance
+      float line = smoothstep(0.0, 0.02, abs(fract(vUv.x * 10.0) - 0.5));
+      line *= smoothstep(0.0, 0.02, abs(fract(vUv.y * 10.0) - 0.5));
+
       // Apply wireframe with enhanced glow on lines
       vec3 finalColor = color * (1.0 - line * 0.2);
-      
+
       // Subtle breathing/pulsing effect
       float pulse = sin(uTime * 1.5) * 0.08 + 0.92;
       finalColor *= pulse;
-      
+
       // Slight opacity variation for ethereal feel
       float alpha = 0.65 + intensity * 0.15;
-      
+
       gl_FragColor = vec4(finalColor, alpha);
     }
   `
@@ -131,27 +133,27 @@ function Sphere() {
     varying vec2 vUv;
     varying float vDisplacement;
     varying vec3 vNormal;
-    
+
     void main() {
       // Energy intensity based on displacement
       float intensity = 0.3 + vDisplacement * 2.0;
-      
+
       // Subtle core colors - similar to outer but slightly brighter
       vec3 mediumBlue = vec3(0.3, 0.6, 0.95);   // Medium blue
       vec3 brightCyan = vec3(0.5, 0.8, 1.0);    // Bright cyan
       vec3 lightCyan = vec3(0.65, 0.85, 1.0);   // Light cyan
-      
+
       // Create subtle gradient for core
       vec3 color = mix(mediumBlue, brightCyan, intensity);
       color = mix(color, lightCyan, intensity * 0.5);
-      
+
       // Subtle breathing/pulsing effect
       float pulse = sin(uTime * 1.5) * 0.08 + 0.92;
       color *= pulse;
-      
+
       // Subtle opacity - just a bit more visible than outer
       float alpha = 0.2 + intensity * 0.15;
-      
+
       gl_FragColor = vec4(color, alpha);
     }
   `
@@ -185,7 +187,7 @@ function Sphere() {
 
   return (
     <>
-      {/* Main animated wireframe sphere */}
+      {/* Main animated wireframe sphere - HIGH QUALITY */}
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.5, 64]} />
         <shaderMaterial
@@ -198,7 +200,7 @@ function Sphere() {
         />
       </mesh>
 
-      {/* Inner animated core - same warping effect but smaller */}
+      {/* Inner animated core - HIGH QUALITY */}
       <mesh ref={coreRef}>
         <icosahedronGeometry args={[0.7, 32]} />
         <shaderMaterial
@@ -236,8 +238,17 @@ export function WispOrb() {
       gl={{
         antialias: true,
         alpha: true,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
       }}
+      performance={{ min: 0.5 }}
     >
+      {/* Adaptive performance: automatically reduces DPR when FPS drops */}
+      <AdaptiveDpr pixelated />
+      {/* Adaptive events: disables raycasting when performance is poor */}
+      <AdaptiveEvents />
+
       <ambientLight intensity={0.3} />
       <pointLight
         position={[0, 0, 0]}
