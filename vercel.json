@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/docs/:match*",
-      "destination": "https://docs.usewisp.dev/:match*"
+      "source": "/docs/:path*",
+      "destination": "https://docs.usewisp.dev/:path*"
+    },
+    {
+      "source": "/docs",
+      "destination": "https://docs.usewisp.dev"
     }
   ]
 }
