@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs/:path*",
+      "destination": "https://docs.usewisp.dev/:path*"
+    },
+    {
+      "source": "/docs",
+      "destination": "https://docs.usewisp.dev"
+    }
+  ]
+}
