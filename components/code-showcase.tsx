@@ -34,7 +34,7 @@ export function CodeShowcase() {
             Build trading logic with simple, chainable functions.
           </p>
           <motion.a
-            href="https://docs.usewisp.dev/"
+            href="https://usewisp.dev/docs"
             data-cursor-hover
             target={"_blank"}
             whileHover={{ x: 4 }}

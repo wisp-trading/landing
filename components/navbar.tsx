@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 
 const navLinks = [
-  { label: "Docs", href: "https://docs.usewisp.dev" },
+  { label: "Docs", href: "https://usewisp.dev/docs" },
   { label: "GitHub", href: "https://github.com/wisp-trading/wisp" },
-  { label: "Examples", href: "https://docs.usewisp.dev/docs/examples" },
+  { label: "Examples", href: "https://usewisp.dev/docs/examples" },
 ]
 
 export function Navbar() {
