@@ -28,7 +28,8 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        style={{ top: "41px" }}
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/80 backdrop-blur-md border-b border-border"
             : ""
@@ -44,21 +45,22 @@ export function Navbar() {
             }}
             className="group flex items-center gap-2"
           >
+            <h3 className="font-sans text-xl font-semibold tracking-tight text-foreground">
+              Wisp
+            </h3>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative w-8 h-8"
+              className="relative w-6 h-6 rounded-lg overflow-hidden"
             >
-              <h3>Wisp</h3>
               {/*<Image*/}
-              {/*  src="/wisp-logo.png"*/}
+              {/*  src="/logo-transparent.svg"*/}
               {/*  alt="Wisp Logo"*/}
               {/*  fill*/}
               {/*  className="object-contain"*/}
               {/*/>*/}
             </motion.div>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-150 transition-transform duration-300" />
           </a>
 
           {/* Desktop Navigation */}

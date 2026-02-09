@@ -14,7 +14,7 @@ const menuItems: MenuItem[] = [
   { icon: "📊", label: "Monitor" },
   { icon: "⚙️", label: "Settings" },
   { icon: "ℹ️", label: "Help" },
-  { icon: "🆕", label: "Create New Project", badge: "NEW" },
+  { icon: "🆕", label: "Create New Project" },
 ]
 
 export function Terminal() {

@@ -18,6 +18,7 @@ export function Hero() {
     <section
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden bg-[#050505]"
+      style={{ paddingTop: "41px" }}
     >
       {/* 3D Sphere Background */}
       <div className="absolute inset-0">
@@ -29,7 +30,7 @@ export function Hero() {
         style={{ opacity, scale }}
         className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 md:px-12 md:py-20"
       >
-        {/* Top Left */}
+        {/* Top Left with Alpha Version Badge */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,6 +40,61 @@ export function Hero() {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
+          <div className="flex items-start gap-4 mb-6">
+            <div className="relative group">
+              <div
+                className="absolute -inset-2 rounded-lg opacity-50 group-hover:opacity-75 blur-lg transition duration-300"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 212, 255, 0.05))",
+                }}
+              />
+              <div
+                className="relative px-4 py-2 rounded-lg border shadow-xl"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.8)",
+                  backdropFilter: "blur(12px)",
+                  borderColor: "rgba(0, 212, 255, 0.2)",
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className="font-mono text-xs tracking-widest font-semibold"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#00d4ff",
+                    }}
+                  >
+                    v0.0.8-alpha
+                  </span>
+                  <div
+                    className="h-3 w-px"
+                    style={{ backgroundColor: "rgba(0, 212, 255, 0.3)" }}
+                  />
+                  <span className="relative flex h-2 w-2">
+                    <span
+                      className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                      style={{ backgroundColor: "#00d4ff" }}
+                    />
+                    <span
+                      className="relative inline-flex rounded-full h-2 w-2"
+                      style={{ backgroundColor: "#00d4ff" }}
+                    />
+                  </span>
+                  <span
+                    className="font-mono text-[10px] tracking-wider uppercase"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "rgba(0, 212, 255, 0.9)",
+                    }}
+                  >
+                    In Development
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
             ALGORITHMIC
             <br />
