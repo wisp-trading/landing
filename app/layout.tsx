@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Playfair_Display, Geist_Mono } from "next/font/google"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { AlphaBanner } from "@/components/alpha-banner"
@@ -50,6 +51,7 @@ export default function RootLayout({
         <div className="noise-overlay" />
         <AlphaBanner />
         {children}
+        <GoogleAnalytics gaId="G-WSNWFHXWJ3" />
         <Analytics />
         <SpeedInsights />
       </body>
