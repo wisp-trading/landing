@@ -71,7 +71,7 @@ export function Features() {
           className="mb-16"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            04 — BATTERIES INCLUDED
+            02 — BATTERIES INCLUDED
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05]">
             EVERYTHING

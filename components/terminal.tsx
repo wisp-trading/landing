@@ -74,7 +74,7 @@ export function Terminal() {
           className="lg:col-span-4"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            06 — INTUITIVE
+            04 — INTUITIVE
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05]">
             MADE
