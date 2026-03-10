@@ -21,15 +21,33 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Center - License */}
-          <a
-            href="https://opensource.org/licenses/MIT"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
-          >
-            MIT License
-          </a>
+          {/* Center - Links */}
+          <div className="flex items-center gap-6">
+            <a
+              href="https://usewisp.dev/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
+            >
+              Docs
+            </a>
+            <a
+              href="https://usewisp.dev/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
+            >
+              Blog
+            </a>
+            <a
+              href="https://opensource.org/licenses/MIT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
+            >
+              MIT License
+            </a>
+          </div>
 
           {/* Right - Built in Go */}
           <a

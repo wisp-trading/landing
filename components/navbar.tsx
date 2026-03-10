@@ -6,6 +6,7 @@ import Image from "next/image"
 
 const navLinks = [
   { label: "Docs", href: "https://usewisp.dev/docs" },
+  { label: "Blog", href: "https://usewisp.dev/blog" },
   { label: "GitHub", href: "https://github.com/wisp-trading/wisp" },
   { label: "Examples", href: "https://usewisp.dev/docs/examples" },
 ]
