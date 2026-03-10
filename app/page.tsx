@@ -1,11 +1,12 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { LLMBanner } from "@/components/llm-banner"
 import { Intro } from "@/components/intro"
+import { Platforms } from "@/components/platforms"
+import { Features } from "@/components/features"
+import { Agentic } from "@/components/agentic"
 import { Terminal } from "@/components/terminal"
 import { CodeShowcase } from "@/components/code-showcase"
-import { About } from "@/components/about"
-import { Works } from "@/components/works"
-import { TechMarquee } from "@/components/tech-marquee"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { SectionBlend } from "@/components/section-blend"
@@ -16,14 +17,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <LLMBanner />
         <Intro />
+        <Platforms />
+        <Features />
+        <Agentic />
         <Terminal />
         <CodeShowcase />
         <SectionBlend />
-
-        {/*<About />*/}
-        {/*<Works />*/}
-        {/*<TechMarquee />*/}
         <Footer />
       </main>
     </SmoothScroll>

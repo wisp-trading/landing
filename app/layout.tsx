@@ -18,21 +18,35 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Wisp - Algorithmic Trading Framework in Go",
+  title: "Wisp — Trading Bot Framework | Algorithmic & Agentic",
   description:
-    "Fast, production-ready trading framework with interactive TUI. Write strategies in Go, backtest, and deploy to live markets.",
+    "Open-source trading bot framework built in Go. Connect to Polymarket, Hyperliquid, Paradex, Binance, and more. Write strategies yourself or let an AI agent trade autonomously. Batteries included.",
+  keywords: [
+    "trading bot framework",
+    "algorithmic trading",
+    "agentic trading",
+    "trading automation",
+    "crypto trading bot",
+    "go trading framework",
+    "golang trading bot",
+    "polymarket bot",
+    "hyperliquid bot",
+    "AI trading bot",
+    "LLM trading agent",
+    "automated trading",
+  ],
   openGraph: {
-    title: "Wisp - Algorithmic Trading Framework in Go",
+    title: "Wisp — Trading Bot Framework | Algorithmic & Agentic",
     description:
-      "Build trading strategies with a composable Go API. Sub-millisecond execution, multi-exchange support, beautiful terminal interface.",
+      "Open-source trading bot framework in Go. Multi-exchange support, backtesting, paper trading, and a first-class agentic interface for LLM-driven strategies.",
     url: "https://usewisp.dev",
     siteName: "Wisp",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wisp - Algorithmic Trading Framework in Go",
+    title: "Wisp — Trading Bot Framework | Algorithmic & Agentic",
     description:
-      "Fast, production-ready trading framework with interactive TUI.",
+      "Build trading bots in Go. Connect to Polymarket, Hyperliquid, Paradex, Binance and more. Human-written or AI-driven — batteries included.",
   },
 }
 

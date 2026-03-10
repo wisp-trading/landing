@@ -74,7 +74,7 @@ export function Terminal() {
           className="lg:col-span-4"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            02 — INTUITIVE
+            06 — INTUITIVE
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05]">
             MADE
@@ -82,6 +82,10 @@ export function Terminal() {
             FOR
             <br />
             <span className="italic">TRADERS</span>
+            <br />
+            <span className="text-3xl md:text-4xl lg:text-5xl text-muted-foreground font-light not-italic">
+              & AGENTS
+            </span>
           </h2>
         </motion.div>
 
@@ -118,7 +122,7 @@ export function Terminal() {
             </div>
 
             {/* Terminal Content */}
-            <div className="bg-[#1a2332] p-8 md:p-12 min-h-[500px] md:min-h-[600px] font-mono text-base flex flex-col">
+            <div className="bg-[#1a2332] p-5 md:p-12 min-h-[420px] md:min-h-[600px] font-mono text-base flex flex-col">
               {!showTUI ? (
                 // Typing Animation: Simulate user typing "wisp"
                 <motion.div

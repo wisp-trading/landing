@@ -21,7 +21,7 @@ export function CodeShowcase() {
           className="lg:col-span-4"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            03 — COMPOSABLE
+            07 — COMPOSABLE
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-6">
             WRITTEN
@@ -31,7 +31,9 @@ export function CodeShowcase() {
             <span className="italic text-[1.15em] font-medium">GO</span>
           </h2>
           <p className="text-gray-400 text-base md:text-lg mb-6">
-            Build trading logic with simple, chainable functions.
+            Build trading bots with simple, chainable functions. Go gives you
+            speed, reliability, and static types — so your bot runs 24/7 without
+            surprises.
           </p>
           <motion.a
             href="https://usewisp.dev/docs"
@@ -67,7 +69,7 @@ export function CodeShowcase() {
             <div className="absolute inset-0 rounded-xl bg-linear-to-br from-[#2563eb]/20 via-transparent to-[#2563eb]/10 pointer-events-none" />
 
             {/* Code block */}
-            <div className="relative bg-[#0a0f1a] p-10 md:p-12 lg:p-14 rounded-xl border border-[#2563eb]/20">
+            <div className="relative bg-[#0a0f1a] p-5 md:p-12 lg:p-14 rounded-xl border border-[#2563eb]/20">
               <pre className="font-mono text-sm md:text-base leading-[1.8] overflow-x-auto">
                 <code>
                   <span className="text-[#c678dd]">func</span>{" "}

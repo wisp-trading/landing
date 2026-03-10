@@ -95,12 +95,12 @@ export function Hero() {
             </div>
           </div>
 
-          <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            ALGORITHMIC
+          <h2 className="font-sans text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
+            THE TRADING
             <br />
-            TRADING
+            BOT
             <br />
-            <span className="italic">IN GO</span>
+            <span className="italic">FRAMEWORK</span>
           </h2>
         </motion.div>
 
@@ -146,10 +146,10 @@ export function Hero() {
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
             01 — RELIABILITY
           </p>
-          <h2 className="font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
-            BUILT FOR
+          <h2 className="font-sans text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
+            BUILT IN GO
             <br />
-            <span className="italic">PRODUCTION</span>
+            <span className="italic">FOR PRODUCTION</span>
           </h2>
         </motion.div>
       </motion.div>
