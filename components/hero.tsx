@@ -28,7 +28,7 @@ export function Hero() {
       {/* Typography Overlay */}
       <motion.div
         style={{ opacity, scale }}
-        className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 md:px-12 md:py-20"
+        className="relative z-10 h-full flex flex-col justify-between px-8 pt-20 pb-8 md:p-12 md:px-12 md:py-20"
       >
         {/* Top Left with Alpha Version Badge */}
         <motion.div
@@ -159,7 +159,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

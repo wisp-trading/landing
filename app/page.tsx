@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <SmoothScroll>
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <LLMBanner />
         <Intro />

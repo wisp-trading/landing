@@ -4,7 +4,7 @@ import { GithubIcon } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-black">
+    <footer className="relative z-20 border-t border-white/10 bg-black">
       <div className="px-8 md:px-12 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-[#888888]">
           {/* Left - Copyright */}

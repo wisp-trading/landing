@@ -244,6 +244,8 @@ export function WispOrb() {
     setMounted(true)
   }, [])
 
+  const cameraZ = mounted && window.innerWidth < 768 ? 8.5 : 5
+
   if (!mounted) {
     return (
       <div className="w-full h-full flex items-center justify-center">
@@ -254,7 +256,7 @@ export function WispOrb() {
 
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
+      camera={{ position: [0, 0, cameraZ], fov: 45 }}
       className="w-full my-0 h-full py-0"
       dpr={[1, 2]}
       gl={{
