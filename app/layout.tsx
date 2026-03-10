@@ -4,7 +4,6 @@ import { Playfair_Display, Geist_Mono } from "next/font/google"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { AlphaBanner } from "@/components/alpha-banner"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -63,7 +62,6 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden">
         <div className="noise-overlay" />
-        <AlphaBanner />
         {children}
         <GoogleAnalytics gaId="G-WSNWFHXWJ3" />
         <Analytics />

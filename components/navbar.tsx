@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Examples", href: "https://usewisp.dev/docs/examples" },
 ]
 
-export function Navbar() {
+export function Navbar({ bannerVisible = true }: { bannerVisible?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -28,7 +28,7 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{ top: "41px" }}
+        style={{ top: bannerVisible ? "41px" : "0px" }}
         className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/80 backdrop-blur-md border-b border-border"

@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/navbar"
+import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
 import { LLMBanner } from "@/components/llm-banner"
 import { Intro } from "@/components/intro"
@@ -14,7 +14,7 @@ import { SectionBlend } from "@/components/section-blend"
 export default function Home() {
   return (
     <SmoothScroll>
-      <Navbar />
+      <SiteHeader />
       <main className="overflow-x-hidden">
         <Hero />
         <LLMBanner />

@@ -10,7 +10,7 @@ interface GitHubRelease {
   published_at: string
 }
 
-export function AlphaBanner() {
+export function AlphaBanner({ onDismiss }: { onDismiss?: () => void }) {
   const [isVisible, setIsVisible] = useState(true)
   const [latestRelease, setLatestRelease] = useState<GitHubRelease | null>(null)
 
@@ -86,7 +86,10 @@ export function AlphaBanner() {
 
           {/* Close Button */}
           <button
-            onClick={() => setIsVisible(false)}
+            onClick={() => {
+              setIsVisible(false)
+              onDismiss?.()
+            }}
             className="p-1 rounded flex-shrink-0 transition-colors"
             style={{
               color: "#a1a1aa",
