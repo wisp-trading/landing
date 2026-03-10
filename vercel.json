@@ -7,6 +7,14 @@
     {
       "source": "/docs",
       "destination": "https://docs.usewisp.dev"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://blog.usewisp.dev/:path*"
+    },
+    {
+      "source": "/blog",
+      "destination": "https://blog.usewisp.dev"
     }
   ]
 }

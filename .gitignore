@@ -3,6 +3,7 @@
 # ide
 .idea
 /docs
+.claude
 
 # dependencies
 /node_modules
