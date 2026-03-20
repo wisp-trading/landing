@@ -1,0 +1,12 @@
+# Wisp Trading Bot Framework
+# https://usewisp.dev
+/* TEAM */
+Team: Wisp Development Team
+Site: https://usewisp.dev
+Location: Global
+/* THANKS */
+Thanks to the open-source community
+/* SITE */
+Standards: HTML5, CSS3, JavaScript, TypeScript, React, Next.js
+Components: shadcn/ui, Radix UI
+Software: Go (core framework), Next.js (website)

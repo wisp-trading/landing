@@ -1,0 +1,71 @@
+{
+  "name": "Wisp",
+  "fullName": "Wisp Trading Bot Framework",
+  "tagline": "Trading Bot Framework | Algorithmic & Agentic",
+  "description": "Open-source trading bot framework built in Go. Connect to Polymarket, Hyperliquid, Paradex, Binance, and more. Write strategies yourself or let an AI agent trade autonomously. Batteries included.",
+  "url": "https://usewisp.dev",
+  "type": "software",
+  "category": "trading framework",
+  "keywords": [
+    "trading bot framework",
+    "algorithmic trading",
+    "agentic trading",
+    "trading automation",
+    "crypto trading bot",
+    "go trading framework",
+    "golang trading bot",
+    "polymarket bot",
+    "hyperliquid bot",
+    "AI trading bot",
+    "LLM trading agent",
+    "automated trading",
+    "backtesting",
+    "paper trading",
+    "multi-exchange trading"
+  ],
+  "technology": {
+    "languages": ["Go", "TypeScript"],
+    "frameworks": ["Next.js", "React"],
+    "platforms": ["Linux", "macOS", "Windows"]
+  },
+  "features": [
+    "Multi-exchange support (Polymarket, Hyperliquid, Paradex, Binance)",
+    "Algorithmic trading strategies",
+    "Agentic trading with LLM integration",
+    "Backtesting engine",
+    "Paper trading mode",
+    "Real-time market data",
+    "Portfolio management",
+    "Performance analytics"
+  ],
+  "exchanges": [
+    "Polymarket",
+    "Hyperliquid",
+    "Paradex",
+    "Binance"
+  ],
+  "aiFeatures": {
+    "agenticTrading": true,
+    "llmIntegration": true,
+    "naturalLanguageStrategies": true,
+    "autonomousTrading": true,
+    "marketAnalysis": true
+  },
+  "openSource": true,
+  "license": "Open Source",
+  "contact": {
+    "support": "hello@usewisp.dev",
+    "website": "https://usewisp.dev"
+  },
+  "resources": {
+    "website": "https://usewisp.dev",
+    "documentation": "https://usewisp.dev",
+    "github": "https://github.com/wisp-trading/wisp",
+    "rss": "https://usewisp.dev/rss.xml",
+    "sitemap": "https://usewisp.dev/sitemap.xml",
+    "robots": "https://usewisp.dev/robots.txt"
+  },
+  "aiCrawlerPolicy": "allow-all",
+  "lastUpdated": "2026-03-20"
+}
+

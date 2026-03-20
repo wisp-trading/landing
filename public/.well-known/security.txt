@@ -1,0 +1,4 @@
+Contact: mailto:security@usewisp.dev
+Preferred-Languages: en
+Canonical: https://usewisp.dev/.well-known/security.txt
+Policy: https://usewisp.dev
