@@ -99,6 +99,11 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
+      <script
+        src="https://analytics.ahrefs.com/analytics.js"
+        data-key="T+vmDADaUvAWUk/tPgj/rA"
+        async
+      ></script>
     </html>
   )
 }
