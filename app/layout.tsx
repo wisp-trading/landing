@@ -4,6 +4,7 @@ import { Playfair_Display, Geist_Mono } from "next/font/google"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from "next/script"
 import { StructuredData } from "@/components/structured-data"
 import "./globals.css"
 
@@ -84,6 +85,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://usewisp.dev",
+    types: {
+      "application/rss+xml": "https://usewisp.dev/rss.xml",
+    },
   },
   category: "technology",
 }
@@ -106,12 +110,12 @@ export default function RootLayout({
         <GoogleAnalytics gaId="G-WSNWFHXWJ3" />
         <Analytics />
         <SpeedInsights />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="T+vmDADaUvAWUk/tPgj/rA"
+          strategy="afterInteractive"
+        />
       </body>
-      <script
-        src="https://analytics.ahrefs.com/analytics.js"
-        data-key="T+vmDADaUvAWUk/tPgj/rA"
-        async
-      ></script>
     </html>
   )
 }
