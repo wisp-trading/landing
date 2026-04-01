@@ -95,13 +95,18 @@ export function Hero() {
             </div>
           </div>
 
-          <h2 className="font-sans text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
+          <h1 className="font-sans text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
             THE TRADING
             <br />
             BOT
             <br />
             <span className="italic">FRAMEWORK</span>
-          </h2>
+          </h1>
+          <p className="mt-4 max-w-sm font-mono text-xs leading-relaxed tracking-wide text-gray-400">
+            Open-source Go framework for algorithmic &amp; agentic trading.
+            Backtest, paper trade, then go live - on Hyperliquid, Binance,
+            Polymarket &amp; more.
+          </p>
         </motion.div>
 
         {/* Center Button */}
@@ -144,7 +149,7 @@ export function Hero() {
           className="self-end text-right"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-2">
-            01 — RELIABILITY
+            01 - RELIABILITY
           </p>
           <h2 className="font-sans text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-balance">
             BUILT IN GO

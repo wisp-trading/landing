@@ -8,7 +8,7 @@ const features = [
     icon: "⚡",
     title: "Multi-exchange",
     description:
-      "Polymarket, Hyperliquid, Paradex, Binance and more — one connector interface for all of them.",
+      "Polymarket, Hyperliquid, Paradex, Binance and more - one connector interface for all of them.",
   },
   {
     icon: "🤖",
@@ -32,7 +32,7 @@ const features = [
     icon: "🔢",
     title: "Built-in indicators",
     description:
-      "RSI, MACD, EMA, Bollinger Bands and more — composable, chainable, and ready to use.",
+      "RSI, MACD, EMA, Bollinger Bands and more - composable, chainable, and ready to use.",
   },
   {
     icon: "🖥",
@@ -44,7 +44,7 @@ const features = [
     icon: "🔋",
     title: "Batteries included",
     description:
-      "Sensible defaults out of the box. No boilerplate, no config sprawl — override only what you need.",
+      "Sensible defaults out of the box. No boilerplate, no config sprawl - override only what you need.",
   },
   {
     icon: "🦾",
@@ -71,7 +71,7 @@ export function Features() {
           className="mb-16"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            02 — BATTERIES INCLUDED
+            02 - BATTERIES INCLUDED
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05]">
             EVERYTHING

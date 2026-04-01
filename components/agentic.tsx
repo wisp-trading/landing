@@ -20,7 +20,7 @@ export function Agentic() {
           className="mb-16"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            03 — TWO WAYS TO TRADE
+            03 - TWO WAYS TO TRADE
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05]">
             HUMAN
@@ -61,7 +61,7 @@ export function Agentic() {
                 "Real-time monitoring via the TUI",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3">
-                  <span className="text-white/30 mt-0.5">—</span>
+                  <span className="text-white/30 mt-0.5">-</span>
                   <span className="text-sm text-gray-400">{point}</span>
                 </li>
               ))}
@@ -86,8 +86,8 @@ export function Agentic() {
                 Let an LLM trade
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Wisp exposes a structured agentic interface — market state,
-                positions, and available actions — as context any LLM can reason
+                Wisp exposes a structured agentic interface - market state,
+                positions, and available actions - as context any LLM can reason
                 over. The model generates signals; Wisp executes them.
               </p>
             </div>
@@ -97,10 +97,10 @@ export function Agentic() {
                 "Works with Claude, GPT-4, Gemini, and any model",
                 "Structured market context fed directly to the model",
                 "Full audit trail of every agent decision",
-                "Human oversight controls — pause, override, stop",
+                "Human oversight controls - pause, override, stop",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3">
-                  <span className="text-[#00d4ff]/40 mt-0.5">—</span>
+                  <span className="text-[#00d4ff]/40 mt-0.5">-</span>
                   <span className="text-sm text-gray-400">{point}</span>
                 </li>
               ))}

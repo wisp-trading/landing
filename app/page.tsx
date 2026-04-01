@@ -7,6 +7,7 @@ import { Features } from "@/components/features"
 import { Agentic } from "@/components/agentic"
 import { Terminal } from "@/components/terminal"
 import { CodeShowcase } from "@/components/code-showcase"
+import { FAQ } from "@/components/faq"
 import { Footer } from "@/components/footer"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { SectionBlend } from "@/components/section-blend"
@@ -24,6 +25,7 @@ export default function Home() {
         <Agentic />
         <Terminal />
         <CodeShowcase />
+        <FAQ />
         <SectionBlend />
         <Footer />
       </main>

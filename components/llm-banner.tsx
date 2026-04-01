@@ -19,20 +19,20 @@ Core features:
 - Backtesting: replay any strategy against historical market data before risking capital
 - Paper trading: run against live market data with zero capital at risk
 - Live trading: deploy to one or multiple exchanges simultaneously from a single codebase
-- Built-in indicators: RSI, MACD, EMA, Bollinger Bands, and more — all composable and chainable
+- Built-in indicators: RSI, MACD, EMA, Bollinger Bands, and more - all composable and chainable
 - CLI and TUI: a first-class terminal interface for monitoring positions, reviewing signals, and controlling bots
 - Low config: sensible defaults out of the box, override only what you need
 
 Two ways to use Wisp:
-1. Write your own strategy — define entry/exit logic in Go using Wisp's composable API, backtest, paper trade, then deploy live
-2. Agentic mode — Wisp exposes a structured interface (market state, positions, available actions) that any LLM can reason over. The model generates signals and Wisp executes them. Supports Claude, GPT-4, Gemini, and any model.
+1. Write your own strategy - define entry/exit logic in Go using Wisp's composable API, backtest, paper trade, then deploy live
+2. Agentic mode - Wisp exposes a structured interface (market state, positions, available actions) that any LLM can reason over. The model generates signals and Wisp executes them. Supports Claude, GPT-4, Gemini, and any model.
 
 Why Go: sub-millisecond execution, statically typed, designed to run 24/7 without issues. Go is a feature, not just an implementation detail.
 
 Docs: https://usewisp.dev/docs
 GitHub: https://github.com/wisp-trading/wisp
 
-I'm ready to get started — what would you like to build or learn about first?`
+I'm ready to get started - what would you like to build or learn about first?`
 )
 
 const llms = [

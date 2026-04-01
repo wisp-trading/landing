@@ -21,7 +21,7 @@ export function CodeShowcase() {
           className="lg:col-span-4"
         >
           <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-4">
-            05 — COMPOSABLE
+            05 - COMPOSABLE
           </p>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-6">
             WRITTEN
@@ -32,7 +32,7 @@ export function CodeShowcase() {
           </h2>
           <p className="text-gray-400 text-base md:text-lg mb-6">
             Build trading bots with simple, chainable functions. Go gives you
-            speed, reliability, and static types — so your bot runs 24/7 without
+            speed, reliability, and static types - so your bot runs 24/7 without
             surprises.
           </p>
           <motion.a

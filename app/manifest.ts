@@ -2,7 +2,7 @@ import { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Wisp — Trading Bot Framework",
+    name: "Wisp - Trading Bot Framework",
     short_name: "Wisp",
     description:
       "Open-source trading bot framework built in Go. Multi-exchange support for algorithmic and agentic trading.",
