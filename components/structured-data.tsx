@@ -48,9 +48,11 @@ export function StructuredData() {
       availability: "https://schema.org/InStock",
     },
     description:
-      "Open-source trading bot framework built in Go. Backtest strategies against historical data, paper trade with zero capital risk, then deploy live to Hyperliquid, Binance, Polymarket, and Paradex. First-class agentic interface for Claude, GPT-4, and any LLM.",
+      "Open-source trading bot framework built in Go with native Polymarket prediction market support. Backtest strategies against historical data, paper trade with zero capital risk, then deploy live to Hyperliquid, Binance, Polymarket, and Paradex. First-class agentic interface for Claude, GPT-4, and any LLM.",
     featureList: [
-      "Multi-exchange support: Hyperliquid, Binance, Polymarket, Paradex",
+      "Multi-market support: spot, perpetual futures, options, and prediction markets",
+      "Prediction market trading: Native Polymarket connector — only Go framework with this support",
+      "Crypto exchange support: Hyperliquid, Binance, Paradex, Gate.io, Deribit, Bybit",
       "Backtesting engine — replay strategies against historical data",
       "Paper trading mode — live market data, zero capital at risk",
       "LLM agentic interface — let Claude, GPT-4, or any AI model trade autonomously",

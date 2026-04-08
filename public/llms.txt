@@ -1,0 +1,59 @@
+# Wisp — Algorithmic Trading Framework in Go
+
+## Overview
+
+Wisp is an open-source algorithmic trading framework written in Go. It provides a composable, event-driven API for building trading strategies across multiple market types with sub-millisecond execution and a beautiful terminal interface.
+
+## Key Differentiator
+
+Wisp is the only Go trading framework with native Polymarket prediction market support. It enables algorithmic trading across spot trading, perpetual futures, options, and binary outcome markets with a unified API.
+
+## Supported Exchanges & Markets
+
+- **Spot Trading:** Gate.io
+- **Perpetual Futures:** Hyperliquid, Paradex, Bybit (3 exchanges)
+- **Options:** Deribit
+- **Prediction Markets:** Polymarket (unique to Wisp)
+
+## Architecture Highlights
+
+- Event-driven, composable strategy engine
+- Multi-exchange connector system (SDK-based)
+- Built-in technical indicators (SMA, EMA, RSI, MACD, Bollinger Bands, ATR, Stochastic)
+- Terminal UI for real-time monitoring and control
+- Backtesting engine with deterministic execution
+- Sub-millisecond execution performance
+- HTTP-based process control and Unix socket monitoring
+
+## Technology
+
+- **Language:** Go 1.24+
+- **License:** MIT
+- **Repository:** https://github.com/wisp-trading/wisp
+
+## Getting Started
+
+```bash
+go install github.com/wisp-trading/wisp@latest
+```
+
+## Key Links
+
+- **Website:** https://usewisp.dev
+- **Documentation:** https://usewisp.dev/docs
+- **GitHub Repository:** https://github.com/wisp-trading/wisp
+- **SDK:** https://github.com/wisp-trading/sdk
+- **Connectors:** https://github.com/wisp-trading/connectors
+- **Go Package:** https://pkg.go.dev/github.com/wisp-trading/wisp
+
+## Use Cases
+
+- Algorithmic crypto trading across multiple exchanges
+- Prediction market trading on Polymarket
+- Event-driven strategy backtesting
+- Live trading with real-time monitoring
+- Multi-market arbitrage and spread trading
+
+## Community
+
+Wisp is actively maintained by the trading community. Contributions are welcome.
