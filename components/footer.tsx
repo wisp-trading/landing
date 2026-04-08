@@ -22,7 +22,19 @@ export function Footer() {
           </div>
 
           {/* Center - Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-wrap justify-center">
+            <a
+              href="/features"
+              className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
+            >
+              Features
+            </a>
+            <a
+              href="/polymarket-trading"
+              className="font-mono text-xs tracking-wider hover:text-white transition-colors duration-300"
+            >
+              Polymarket
+            </a>
             <a
               href="https://usewisp.dev/docs"
               target="_blank"

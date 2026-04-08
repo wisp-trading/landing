@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 
 const navLinks = [
+  { label: "Features", href: "/features" },
   { label: "Docs", href: "https://usewisp.dev/docs" },
   { label: "Blog", href: "https://usewisp.dev/blog" },
   { label: "GitHub", href: "https://github.com/wisp-trading/wisp" },
@@ -38,14 +39,7 @@ export function Navbar({ bannerVisible = true }: { bannerVisible?: boolean }) {
       >
         <nav className="flex items-center justify-between px-6 py-4 my-0 md:px-12 md:py-5">
           {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: "smooth" })
-            }}
-            className="group flex items-center gap-2"
-          >
+          <a href="/" className="group flex items-center gap-2">
             <h3 className="font-sans text-xl font-semibold tracking-tight text-foreground">
               Wisp
             </h3>
@@ -66,19 +60,24 @@ export function Navbar({ bannerVisible = true }: { bannerVisible?: boolean }) {
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                  {link.label.toUpperCase()}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isExternal = link.href.startsWith("http")
+              return (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    {...(isExternal && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                    className="group relative font-mono text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    {link.label.toUpperCase()}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground group-hover:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           {/* Status Indicator */}
@@ -129,22 +128,27 @@ export function Navbar({ bannerVisible = true }: { bannerVisible?: boolean }) {
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg md:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="group text-4xl font-sans tracking-tight text-foreground"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {navLinks.map((link, index) => {
+                const isExternal = link.href.startsWith("http")
+                return (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    {...(isExternal && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: index * 0.1 }}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="group text-4xl font-sans tracking-tight text-foreground"
+                  >
+                    {link.label}
+                  </motion.a>
+                )
+              })}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
