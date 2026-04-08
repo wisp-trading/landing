@@ -41,12 +41,6 @@ export function StructuredData() {
     applicationSubCategory: "Trading Software",
     operatingSystem: "Linux, macOS, Windows",
     isAccessibleForFree: true,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
     description:
       "Open-source trading bot framework built in Go with native Polymarket prediction market support. Backtest strategies against historical data, paper trade with zero capital risk, then deploy live to Hyperliquid, Binance, Polymarket, and Paradex. First-class agentic interface for Claude, GPT-4, and any LLM.",
     featureList: [
